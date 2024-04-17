@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .correct { color: green; font-weight: bold; }
+        .incorrect { color: red; }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="display-4">{{ feedback }}</h1>
+        <div id="question" class="mb-3">
+            <h2>{{ question.question }}</h2>
+        </div>
+        <ul class="list-group mb-4">
+            {% for key, option in question.options.items() %}
+                {% if key == question.correct_answer %}
+                    <li class="list-group-item list-group-item-success correct">{{ key }} - {{ option }}</li>
+                {% else %}
+                    <li class="list-group-item list-group-item-danger incorrect">{{ key }} - {{ option }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% if quiz_id == "1" %}
+            <button id="proceedButton" class="btn btn-primary btn-lg">Proceed to Next Quiz</button>
+        {% else %}
+            <button id="backToMenuButton" class="btn btn-secondary btn-lg">Back to Menu</button>
+        {% endif %}
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#proceedButton').click(function() {
+                window.location.href = '/quiz/2';
+            });
+            $('#backToMenuButton').click(function() {
+                window.location.href = '/menu';
+            });
+        });
+    </script>
+</body>
+</html>

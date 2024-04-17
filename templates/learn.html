@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn - {{ lesson.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-3">{{ lesson.title }}</h1>
+        <p class="lead">{{ lesson.text }}</p>
+        <img src="{{ url_for('static', filename='images/' + lesson.image) }}" alt="Table Setting Image" class="table-setting"> <br>
+
+        <button id="next_button" class="btn btn-primary btn-lg">Next</button>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#next_button").click(function() {
+                console.log("Next lesson:", "{{lesson.next_lesson}}");
+
+                if("{{lesson.next_lesson}}" == "end") {
+                    window.location.href = "/quiz/1";
+                } else {
+                    window.location.href = "/learn/{{lesson.next_lesson}}";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

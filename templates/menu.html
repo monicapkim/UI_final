@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Table Setting Guide</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body class="bg-light">
+    <div class="container text-center mt-5">
+        <h1 class="display-4">Welcome to the Art of Table Setting</h1>
+        <p class="lead">Ready to elevate your dining experience? Dive in, learn at your own pace, and when you’re ready, 
+         test your newfound knowledge with our quiz.</p>
+
+        <div class="btn-group" role="group" aria-label="Basic settings">
+            <button id="basic" class="btn btn-outline-primary">Basic</button>
+            <button id="casual" class="btn btn-outline-primary">Casual</button>
+            <button id="formal" class="btn btn-outline-primary">Formal</button>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#basic").click(function() {
+                window.location.href = '/learn/1';
+            });
+            $("#casual").click(function() {
+                window.location.href = '/learn/2';
+            });
+            $("#formal").click(function() {
+                window.location.href = '/learn/3';
+            });
+        });
+    </script>
+</body>
+</html>

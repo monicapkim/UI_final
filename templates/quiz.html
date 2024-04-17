@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - {{question.title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-3">{{ question.question }}</h1>
+
+        {% if question.quiz_id == "1" %}
+            <form id="quiz_form" class="mb-4" method="POST">
+                {% for key, option in question.options.items() %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="quiz_option" id="option{{key}}" value="{{key}}">
+                        <label class="form-check-label" for="option{{key}}">
+                            {{key}} - {{option}}
+                        </label>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary mt-4">Submit Answer</button>
+            </form>
+        {% elif question.quiz_id == "2" %}
+            <div id="drag_and_drop" class="mb-4">Drag and drop the items here</div>
+            <button id="next_button" class="btn btn-secondary" onclick="location.href='/menu'">Back to Menu</button>
+        {% endif %}
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+        });
+    </script>
+</body>
+</html>
